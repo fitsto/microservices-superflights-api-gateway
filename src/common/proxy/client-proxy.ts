@@ -20,4 +20,14 @@ export class ClientProxySuperFlights {
       },
     });
   }
+
+  clientProxyPassenger(): ClientProxy {
+    return ClientProxyFactory.create({
+      transport: Transport.RMQ,
+      options: {
+        urls: this.config.get('AMQP_URL'),
+        queue: RabbitMQ.PassengerQueue,
+      },
+    });
+  }
 }
